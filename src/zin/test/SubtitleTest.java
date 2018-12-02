@@ -7,7 +7,8 @@ public class SubtitleTest {
 	public static void main(String[] args) throws Exception {
 		for(;;) {
 			String subtract =  ZIO.input("How much to subtract");
-			SubtitleUtil.subtractFromAss("D:\\zMovie\\zin.ass", subtract);
+			//SubtitleUtil.subtractFromAss("D:\\zMovie\\zin.ass", subtract);
+			SubtitleUtil.subtractFromSrt("D:\\zMovie\\zin.srt", subtract);
 		}
 	}
 }

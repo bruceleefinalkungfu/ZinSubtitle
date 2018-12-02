@@ -7,6 +7,9 @@ public class Constant {
 	public static final String 		SEC_MILLI_SEPARATOR				= ".";
 	public static final String 		FROM_TO_SEPARATOR				= ",";
 	public static final short		MAX_POSSIBLE_MILLI_SEC_VALUE	= 99;
+	public static final short		MAX_POSSIBLE_MILLI_SEC_VALUE_SRT= 999;
+	public static final String 		NEW_LINE						= System.getProperty("line.separator");
+	
 	
 	// DELETE
 	public static final String		TEMP_SENTENCE_PREFIX_STR		= "Dialogue: 0,";
