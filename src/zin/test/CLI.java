@@ -100,7 +100,7 @@ public class CLI {
 		if(list == null)
 			list = getFiles(".");
 		for(int i=0 ; i<list.size() ; i++) {
-			System.out.println((i+1) +" => " + list.get(i));
+			System.out.println((i+1) +" => " + list.get(i).substring(list.get(i).lastIndexOf("\\")+1));
 		}
 		String fileName = ZIO.input("Enter file index/name or leave it blank if it to be treated like zin.srt");
 		if(fileName == null || fileName.trim().isEmpty())
@@ -115,7 +115,7 @@ public class CLI {
 			if(f.isDirectory()) {
 				list = getFiles(fileName);
 				for(int i=0 ; i<list.size() ; i++) {
-					System.out.println((i+1) +" => " + list.get(i));
+					System.out.println((i+1) +" => " + list.get(i).substring(list.get(i).lastIndexOf("\\")+1));
 				}
 				fileName = ZIO.input("Enter file index/name or leave it blank if it to be treated like zin.srt");
 				if(fileName == null || fileName.trim().isEmpty())
@@ -135,6 +135,6 @@ public class CLI {
 	}
 	
 	public static List<String> getFiles(String dir) throws Exception {
-		return new ArrayList<>( file.getAllFileNamesSet(dir, ".srt", ".ass") ).stream().map(e -> e.substring(e.lastIndexOf("\\")+1)).collect(Collectors.toList());		
+		return new ArrayList<>( file.getAllFileNamesSet(dir, ".srt", ".ass") );		
 	}
 }
