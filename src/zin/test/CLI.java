@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import zin.exception.ZinException;
 import zin.exception.ZinFileNotFoundException;
@@ -18,7 +19,7 @@ import zin.tools.ZinConstant;
 
 public class CLI {
 	static ZinFile file = new ZinFile();
-	static ArrayList<String> list = null;
+	static List<String> list = null;
 	public static String getFileData(String fileName) throws Exception {
 		String fData = file.getStringFromFile(fileName);
 		if(fileName.endsWith(".srt"))
@@ -97,7 +98,7 @@ public class CLI {
 	
 	public static String getFileName() throws Exception {
 		if(list == null)
-			list = new ArrayList<>( file.getAllFileNamesSet(".", ".srt", ".ass") );
+			list = getFiles(".");
 		for(int i=0 ; i<list.size() ; i++) {
 			System.out.println((i+1) +" => " + list.get(i));
 		}
@@ -112,7 +113,7 @@ public class CLI {
 		else {
 			File f = file.getFileFromFileName(fileName);
 			if(f.isDirectory()) {
-				list = new ArrayList<>( file.getAllFileNamesSet(fileName, ".srt", ".ass") );
+				list = getFiles(fileName);
 				for(int i=0 ; i<list.size() ; i++) {
 					System.out.println((i+1) +" => " + list.get(i));
 				}
@@ -134,6 +135,6 @@ public class CLI {
 	}
 	
 	public static List<String> getFiles(String dir) throws Exception {
-		return new ArrayList<>( file.getAllFileNamesSet(".", ".srt", ".ass") );		
+		return new ArrayList<>( file.getAllFileNamesSet(dir, ".srt", ".ass") ).stream().map(e -> e.substring(e.lastIndexOf("\\")+1)).collect(Collectors.toList());		
 	}
 }
