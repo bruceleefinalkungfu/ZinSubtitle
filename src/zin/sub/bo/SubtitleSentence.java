@@ -94,10 +94,14 @@ public class SubtitleSentence {
 		}
 	}
 	public String getStringValue() {
+		if(fromTime.getStringValue().equals(""))
+			return "";
 		return fromTime.hour < 0 ? "" : prefix.str + fromTime.getStringValue() + FROM_TO_SEPARATOR + toTime.getStringValue() + subtitleText.getStringValue() + ZinConstant.NEW_LINE;
 	}
 	
 	public String getSrtValue() {
+		if(fromTime.getSrtValue().equals(""))
+			return "";
 		return fromTime.getSrtValue() + " --> " + toTime.getSrtValue() + NEW_LINE
 				+ subtitleText.getSrtValue() + NEW_LINE; 
 	}

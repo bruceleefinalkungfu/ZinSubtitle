@@ -36,6 +36,8 @@ public class SubtitleSrtImpl implements Subtitle {
 	public String toString () {
 		StringBuilder sb = new StringBuilder();
 		for(SubtitleSentence s : sentences) {
+			if(s.getSrtValue().equals(""))
+				continue;
 			sb.append("1" + Constant.NEW_LINE);
 			sb.append(s.getSrtValue());
 		}
