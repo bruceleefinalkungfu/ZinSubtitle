@@ -2,6 +2,7 @@ package zin.test;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -135,6 +136,6 @@ public class CLI {
 	}
 	
 	public static List<String> getFiles(String dir) throws Exception {
-		return new ArrayList<>( file.getAllFileNamesSet(dir, ".srt", ".ass") );		
+		return file.getAllFileNamesSet(dir, ".srt", ".ass").stream().sorted().collect(Collectors.toList());
 	}
 }
