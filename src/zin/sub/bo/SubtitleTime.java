@@ -1,6 +1,6 @@
 package zin.sub.bo;
 
-import zin.string.ZinRegEx;
+import zin.z.string.ZinRegEx;
 
 public class SubtitleTime {
 

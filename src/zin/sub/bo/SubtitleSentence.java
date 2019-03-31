@@ -1,7 +1,7 @@
 package zin.sub.bo;
 
-import zin.string.ZinRegEx;
-import zin.tools.ZinConstant;
+import zin.z.string.ZinRegEx;
+import zin.z.constant.ZinConstant;
 
 public class SubtitleSentence {
 	public static final String 		FROM_TO_SEPARATOR				= Constant.FROM_TO_SEPARATOR;

@@ -3,20 +3,21 @@ package zin.test;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import zin.exception.ZinException;
-import zin.exception.ZinFileNotFoundException;
-import zin.file.ZinFile;
-import zin.string.ZinRegEx;
-import zin.string.ZinRegEx.Repeat;
+import zin.z.exception.ZinException;
+import zin.z.exception.ZinFileNotFoundException;
+import zin.z.file.ZinFile;
+import zin.z.string.ZinRegEx;
+import zin.z.string.ZinRegEx.Repeat;
 import zin.sub.bo.ProcessSubtitle;
 import zin.sub.util.SubtitleUtil;
-import zin.tools.ZIO;
-import zin.tools.ZinConstant;
+import zin.z.tools.ZIO;
+import zin.z.constant.ZinConstant;
 
 public class CLI {
 	static ZinFile file = new ZinFile();
@@ -35,7 +36,7 @@ public class CLI {
 		for(;;) {
 			String fileName = getFileName();
 			fileName = fileName.toLowerCase();
-			file.write(ZinConstant.ZIN_DATA_DIR+"dumped_subs"+ZinConstant.SLASH+ fileName.substring(fileName.lastIndexOf("\\")+1), getFileData(fileName));
+			file.write(ZinConstant.ZIN_DATA_DIR+"dumped_subs"+ZinConstant.SLASH+ fileName.substring(fileName.lastIndexOf("\\")+1)+"."+new Date().getTime(), getFileData(fileName));
 			outerLoop:
 			for(;;) {
 				String subtract =  ZIO.input("How much to subtract? or press P to process or C to choose another file");

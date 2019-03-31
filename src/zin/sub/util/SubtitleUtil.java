@@ -1,7 +1,7 @@
 package zin.sub.util;
 
-import zin.file.ZinFile;
-import zin.string.ZinRegEx;
+import zin.z.file.ZinFile;
+import zin.z.string.ZinRegEx;
 import zin.sub.bo.Subtitle;
 import zin.sub.bo.SubtitleAssImpl;
 import zin.sub.bo.SubtitleSentence.Prefix;

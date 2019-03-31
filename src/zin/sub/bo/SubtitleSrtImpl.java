@@ -2,7 +2,7 @@ package zin.sub.bo;
 
 import java.util.ArrayList;
 
-import zin.string.ZinRegEx;
+import zin.z.string.ZinRegEx;
 import zin.sub.bo.SubtitleSentence.Prefix;
 import zin.sub.bo.SubtitleSentence.Suffix;
 

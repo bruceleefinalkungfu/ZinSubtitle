@@ -2,10 +2,10 @@ package zin.sub.bo;
 
 import java.util.ArrayList;
 
-import zin.string.ZinRegEx;
+import zin.z.string.ZinRegEx;
 import zin.sub.bo.SubtitleSentence.Prefix;
 import zin.sub.bo.SubtitleSentence.Suffix;
-import zin.tools.ZinConstant;
+import zin.z.constant.ZinConstant;
 
 public class SubtitleAssImpl implements Subtitle {
 	public final Prefix prefix;
