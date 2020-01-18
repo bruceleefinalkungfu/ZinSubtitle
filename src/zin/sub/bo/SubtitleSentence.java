@@ -33,6 +33,14 @@ public class SubtitleSentence {
 		this.toTime = new SubtitleTime(fromTo[1]);
 	}
 	
+	public static final String[] rep;
+	static {
+	    int repStart = 180, repsize = 40;
+	    rep = new String[repsize];
+	    for(int i=0; i<repsize ; i++)
+	        rep[i] = "{pos(192,"+(i+repStart)+")}";
+	}
+	
 	/**
 	 * Used for Srt files
 	 * @param wholeSentenceStr
@@ -44,7 +52,10 @@ public class SubtitleSentence {
 		String fromToStr = twoStr[1];
 		String subStr = "";
 		for(int i=2 ; i < twoStr.length ; i++) {
-			subStr += twoStr[i];
+		    String xy = twoStr[i].trim();
+		    for(String tem : rep)
+		        xy = xy.replaceAll("(\\Q"+tem+"\\E)", "");
+			subStr += xy;
 			subStr += NEW_LINE;
 		}
 		this.subtitleText = new SubtitleText(subStr, null, null);
