@@ -116,12 +116,17 @@ public class CLI {
 				    if(sx.length == 3 && Integer.parseInt(sx[0]) >= MINUTES_MAX_ALLOWED_TO_SUB) {
     				    ProcessSubtitle processSubtitle = new ProcessSubtitle(fileName);
                         String fromTime = subtract;
-                        subtract =  ZIO.input("How much to subtract? "+subtract+" is treated as process because it was more than "+MINUTES_MAX_ALLOWED_TO_SUB+" minutes");
-                        processSubtitle.mark(fromTime, subtract);
-                        for(Map.Entry<String, String> entry : processSubtitle.getEntries()) {
-                            fromTime = entry.getKey();
-                            subtract = entry.getValue();
-                            processSub(fileName, fromTime, subtract);   
+                        subtract =  ZIO.input("How much to subtract? "+subtract+" is treated as process because it was more than "+MINUTES_MAX_ALLOWED_TO_SUB
+                                +" minutes. OR Type 'no' only if you really wanted to subtract "+subtract+"");
+                        if(subtract.toLowerCase().equals("no")) {
+                            subtractSub(fileName, fromTime);
+                        } else {
+                            processSubtitle.mark(fromTime, subtract);
+                            for(Map.Entry<String, String> entry : processSubtitle.getEntries()) {
+                                fromTime = entry.getKey();
+                                subtract = entry.getValue();
+                                processSub(fileName, fromTime, subtract);   
+                            }
                         }
 				    } else {
 				        subtractSub(fileName, subtract);
