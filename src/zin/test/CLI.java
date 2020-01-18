@@ -123,8 +123,9 @@ public class CLI {
                             subtract = entry.getValue();
                             processSub(fileName, fromTime, subtract);   
                         }
+				    } else {
+				        subtractSub(fileName, subtract);
 				    }
-					subtractSub(fileName, subtract);
 				}
 			}
 		}
