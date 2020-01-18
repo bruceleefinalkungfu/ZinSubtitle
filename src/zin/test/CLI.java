@@ -84,7 +84,7 @@ public class CLI {
 			}
 		}
 	}
-	
+	private static final int MINUTES_MAX_ALLOWED_TO_SUB = 3;
 	public static void main(String[] args) throws Exception {
 		outerMostLoop:
 		for(;;) {
@@ -112,6 +112,18 @@ public class CLI {
 				} else if(subtract.equalsIgnoreCase("c")) {
 					break;
 				} else {
+				    String sx[] = subtract.split(ZinRegEx.literal("m").or(ZinRegEx.literal("s")).getRegEx());
+				    if(sx.length == 3 && Integer.parseInt(sx[0]) >= MINUTES_MAX_ALLOWED_TO_SUB) {
+    				    ProcessSubtitle processSubtitle = new ProcessSubtitle(fileName);
+                        String fromTime = subtract;
+                        subtract =  ZIO.input("How much to subtract? "+subtract+" is treated as process because it was more than "+MINUTES_MAX_ALLOWED_TO_SUB+" minutes");
+                        processSubtitle.mark(fromTime, subtract);
+                        for(Map.Entry<String, String> entry : processSubtitle.getEntries()) {
+                            fromTime = entry.getKey();
+                            subtract = entry.getValue();
+                            processSub(fileName, fromTime, subtract);   
+                        }
+				    }
 					subtractSub(fileName, subtract);
 				}
 			}
