@@ -3,7 +3,7 @@
 Best subtitle modifier.
 Change the subtitle delay and save it. Need ZinNew jar to be fully functional
 
-First choose a subtitle it will prompt
+First choose a subtitle then it will prompt
 
 "How much to subtract? or press P to process or C to choose another file"
 
